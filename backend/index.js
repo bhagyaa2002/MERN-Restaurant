@@ -14,7 +14,7 @@ const PORT=process.env.PORT || 8080;
 // }).catch((err)=>{
 //     console.log(err);
 // })
-
+//comment
 console.log(process.env.MONGODB_URL)
 mongoose.set('strictQuery',false);
 mongoose.connect(process.env.MONGODB_URL)
