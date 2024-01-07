@@ -15,6 +15,7 @@ const Home = () => {
   const loadingArray = new Array(4).fill(null);
   const loadingArrayFeature = new Array(10).fill(null);
   const slideProductRef = useRef();
+  
   const nextProduct = () => {
     slideProductRef.current.scrollLeft += 200;
   };
@@ -39,7 +40,7 @@ const Home = () => {
       ...filter
     ]);
   };
-
+ console.log(homeProductCardListVegetables)
   return (
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-4 py-2'>
@@ -115,6 +116,7 @@ const Home = () => {
             homeProductCardListVegetables.map((el) => (
               <CardFeature
                 key={el._id}
+                id={el._id} 
                 name={el.name}
                 category={el.category}
                 price={el.price}
@@ -137,7 +139,13 @@ const Home = () => {
         </div>
         <div className='flex flex-wrap justify-center gap-4 my-4'>
           {dataFilter.map((el) => (
-            <CardFeature key={el._id} image={el.image} name={el.name} category={el.category} price={el.price} />
+            <CardFeature
+             key={el._id} 
+             id={el._id}
+            image={el.image}
+             name={el.name} 
+             category={el.category} 
+             price={el.price} />
           ))}
         </div>
       </div>

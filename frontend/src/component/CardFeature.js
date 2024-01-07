@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const CardFeature = ({ image, name, price, category, loading}) => {
+const CardFeature = ({ image, name, price, category, loading,id}) => {
+  console.log(id);
   return (
     <div className="w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col">
       {image ? (
         <>
-          
+          <Link to={`menu/${id}`}>
             <div className="h-28 flex flex-col justify-center items-center">
               <img src={image} className="h-full" />
             </div>
@@ -24,6 +26,7 @@ const CardFeature = ({ image, name, price, category, loading}) => {
           >
             Add Cart
           </button>
+          </Link>
         </>
       ) : (
         <div className="min-h-[150px] flex justify-center items-center">
@@ -31,6 +34,7 @@ const CardFeature = ({ image, name, price, category, loading}) => {
         </div>
       )}
     </div>
+    
   );
 };
 
