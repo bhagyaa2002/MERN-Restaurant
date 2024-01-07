@@ -19,14 +19,14 @@ const Login = () => {
   });
   const navigate=useNavigate()
 
-  const userData=useSelector(state=>state)
-  
+  const userData=useSelector(state=>state.user)
+  console.log(userData);
 
   const dispatch=useDispatch()
 
 
 
-  console.log(data);
+  console.log("line 29 login JS: ",data);
   const handleShowPassword = () => {
     setShowPassword((preve) => !preve);
   };
@@ -55,16 +55,20 @@ const Login = () => {
         body:JSON.stringify(data)
       })
        const dataRes=await fetchData.json()
-       console.log(dataRes)
-       console.log(userData)
+
+       
+       console.log("datares",dataRes)
+    
        toast(dataRes.message)
        
        
        if(dataRes.alert){
         dispatch(loginRedux(dataRes))
+        console.log("line 65 in login JS",dataRes);
         setTimeout(()=>{
           navigate("/")
-        },1000)//delay in 1sec for displaying login successfully
+        })//delay in 1sec for displaying login successfully
+        
        }
        
     }

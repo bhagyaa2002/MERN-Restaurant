@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const Menu = () => {
-  return (
-    <div>Menu</div>
-  )
-}
+  const { idProduct } = useParams();
+  console.log(idProduct);
 
-export default Menu
+  return (
+    <div>
+      Menu
+    </div>
+  );
+};
+
+export default Menu;

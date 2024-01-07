@@ -71,6 +71,7 @@ app.get("/",(req,res)=>{
 
 //signup api
 
+
 app.post("/SignUp",async(req,res)=>{
 
     try {
@@ -99,12 +100,14 @@ app.post("/login",(req,res)=>{
     let dataSend={};
     try{
     console.log(req.body)
+    // const data1 = new productModel({name:"sham",category:'male',image:"",price:"1000",description:'male'});
+    //       const save = await data1.save();
      const {email}=req.body
      userModel.findOne({email:email}).then((result)=>{
-       
+        
          dataSend={
             
-                _id: result._id,
+                _id: result._id, 
                 firstName: result.firstName,
                 lastName: result.lastName,
                 email: result.email,
@@ -120,7 +123,7 @@ app.post("/login",(req,res)=>{
     catch (error) {
         console.error(error);
         dataSend={};
-        res.status(500).send({ message: "Internal Server Error",data:dataSendc });
+        res.status(500).send({ message: "Internal Server Error",data:dataSend });
     }
 })
      
@@ -134,4 +137,31 @@ app.post("/login",(req,res)=>{
     //     }
     //  })
 
+
+    //product api 
+    const schemaProduct=mongoose.Schema({
+        name :String,
+        category :String,
+        image:String,
+        price:String,
+        description:String,
+    })
+    
+    const productModel=mongoose.model("product",schemaProduct)
+
+    //save product in data for this api
+    app.post("/uploadProduct",async(req,res)=>{
+        console.log("line154",req.body)
+        const data=productModel(req.body)
+        const datasave=await data.save()
+        res.send({message:"Upload Successfully"})
+    })
+
+    //
+    app.get("/product",async(req,res)=>{
+        const data=await productModel.find({})
+       res.send(JSON.stringify(data))
+      
+
+    })
 app.listen(PORT,()=>console.log("server is running at port : "+PORT))
