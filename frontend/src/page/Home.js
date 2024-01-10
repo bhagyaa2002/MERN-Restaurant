@@ -5,13 +5,13 @@ import CardFeature from '../component/CardFeature';
 import { GrPrevious } from 'react-icons/gr';
 import { GrNext } from 'react-icons/gr';
 import FilterProduct from '../component/FilterProduct';
+import AllProduct from '../component/AllProduct';
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  console.log(productData);
+
   const homeProductCardList = productData.slice(1, 5);
   const homeProductCardListVegetables = productData.filter((el) => el.category === 'vegetable', []);
-  console.log(homeProductCardListVegetables);
   const loadingArray = new Array(4).fill(null);
   const loadingArrayFeature = new Array(10).fill(null);
   const slideProductRef = useRef();
@@ -24,23 +24,8 @@ const Home = () => {
     slideProductRef.current.scrollLeft -= 200;
   };
 
-  const categoryList = [...new Set(productData.map((el) => el.category))];
-  console.log(categoryList);
-
-  //filter data display
-  const [filterby, setFilterBy] = useState('');
-  const [dataFilter, setDataFilter] = useState([]);
-  useEffect(() => {
-    setDataFilter(productData);
-  }, [productData]);
-
-  const handleFilterProduct = (category) => {
-    const filter = productData.filter((el) => el.category.toLowerCase() === category.toLowerCase());
-    setDataFilter(() => [
-      ...filter
-    ]);
-  };
- console.log(homeProductCardListVegetables)
+ 
+  
   return (
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-4 py-2'>
@@ -74,7 +59,9 @@ const Home = () => {
           {homeProductCardList[0] ? (
             homeProductCardList.map((el) => (
               <HomeCard
+                
                 key={el._id}
+                id={el._id}
                 image={el.image}
                 name={el.name}
                 price={el.price}
@@ -83,7 +70,7 @@ const Home = () => {
             ))
           ) : (
             loadingArray.map((el, index) => (
-              <HomeCard key={index} loading={"Loading..."} />
+              <HomeCard key={index+"loading"} loading={"Loading..."} />
             ))
           )}
         </div>
@@ -115,7 +102,7 @@ const Home = () => {
           {homeProductCardListVegetables[0] ? (
             homeProductCardListVegetables.map((el) => (
               <CardFeature
-                key={el._id}
+                key={el._id+"vegetable "}
                 id={el._id} 
                 name={el.name}
                 category={el.category}
@@ -128,27 +115,9 @@ const Home = () => {
           )}
         </div>
       </div>
-
-      <div className='my-5'>
-        <h2 className='font-bold text-2xl text-slate-800 mb-4'>Your Product</h2>
-        <div className='flex gap-4 justify-center overflow-scroll scrollbar-none'>
-          {categoryList[0] &&
-            categoryList.map((el) => (
-              <FilterProduct category={el} onClick={() => handleFilterProduct(el)} />
-            ))}
-        </div>
-        <div className='flex flex-wrap justify-center gap-4 my-4'>
-          {dataFilter.map((el) => (
-            <CardFeature
-             key={el._id} 
-             id={el._id}
-            image={el.image}
-             name={el.name} 
-             category={el.category} 
-             price={el.price} />
-          ))}
-        </div>
-      </div>
+     
+     <AllProduct heading={"Your Product"} />
+     
     </div>
   );
 };

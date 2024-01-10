@@ -1,17 +1,25 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import AllProduct from '../component/AllProduct';
+import { addCartItem } from '../redux/productSlice';
 
 const Menu = () => {
   const {filterby} = useParams();
-  console.log(filterby);
-  const params = useParams();
-   console.log(params);
+  // console.log(filterby);
+  // const params = useParams();
+  //  console.log(params);
+   const dispatch=useDispatch()
 
   const productData = useSelector(state=>state.product.productList)
-  console.log(productData)
+ 
   const productDisplay=productData.filter(el=>el._id ===filterby)[0]
   console.log(productDisplay)
+
+  const handleAddCartProduct=(e)=>{
+    dispatch(addCartItem(productDisplay))
+   
+ }
 
   return (
     <div className="p-2 md:p-4">
@@ -33,7 +41,7 @@ const Menu = () => {
           </p>
           <div className='flex gap-3'>
           <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full min-w-[100px]">Buy</button>
-          <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full min-w-[100px]">Add Cart</button>
+          <button onClick={handleAddCartProduct} className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full min-w-[100px]">Add Cart</button>
           </div>
           <div>
             <p className='text-slate-600 font-medium'>Description : </p>
@@ -41,6 +49,7 @@ const Menu = () => {
           </div>
        </div>
       </div>
+      <AllProduct heading={"Related Product"} />
     </div>
   );
 };
