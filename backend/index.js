@@ -1,7 +1,9 @@
 const express=require("express")
 const cors=require("cors")
 const mongoose=require("mongoose")
+const Stripe  = require("stripe")
 const dotenv=require("dotenv").config()
+
 
 const app=express()
 app.use(cors());
@@ -75,7 +77,7 @@ app.get("/",(req,res)=>{
 app.post("/SignUp",async(req,res)=>{
 
     try {
-        console.log(req.body);
+       // console.log(req.body);
         const { email } = req.body;
     
         const result = await userModel.findOne({ email: email });
@@ -99,7 +101,7 @@ app.post("/login",(req,res)=>{
 
     let dataSend={};
     try{
-    console.log(req.body)
+    //console.log(req.body)
     // const data1 = new productModel({name:"sham",category:'male',image:"",price:"1000",description:'male'});
     //       const save = await data1.save();
      const {email}=req.body
@@ -151,7 +153,7 @@ app.post("/login",(req,res)=>{
 
     //save product in data for this api
     app.post("/uploadProduct",async(req,res)=>{
-        console.log("line154",req.body)
+        //console.log("line154",req.body)
         const data=productModel(req.body)
         const datasave=await data.save()
         res.send({message:"Upload Successfully"})
@@ -164,4 +166,48 @@ app.post("/login",(req,res)=>{
       
 
     })
+
+    //payment getway
+    console.log(process.env.STRIPE_SECRET_KEY)
+    const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
+    app.post("/create-checkout-session",async(req,res)=>{
+        //  console.log(req.body)
+         try{
+            const params={
+               submit_type : 'pay',
+               mode : "payment",
+               payment_method_types : ['card'],
+               billing_address_collection : "auto",
+               shipping_options : [{shipping_rate:"shr_1OYqeFSIebbx1BJCVma4TXJL"}],
+               line_items : req.body.map((item)=>{
+                return{
+                    price_data : {
+                        currency : "INR",
+                        product_data : {
+                            name : item.name,
+                            //images : [item.image]
+                        },
+                        unit_amount : item.price * 100,
+                    },
+                    adjustable_quantity : {
+                        enabled : true,
+                        minimum : 1,
+                    },
+                    quantity : item.qty
+                }
+               }),
+               success_url : `${process.env.FRONTEND_URL}/success`,
+               cancel_url : `${process.env.FRONTEND_URL}/cancel`,
+            }
+            const session=await stripe.checkout.sessions.create(params) 
+            console.log(session)
+         res.status(200).json(session.id)
+         }
+         catch(err){
+            console.log(err)
+            res.status(err.statusCode || 500).json(err.message)
+         }
+         
+         
+    } )
 app.listen(PORT,()=>console.log("server is running at port : "+PORT))
