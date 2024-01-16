@@ -20,7 +20,7 @@ import { store } from "./redux/index";
 import { Provider } from "react-redux";
 import Cart from "./page/Cart";
 import Success from "./page/Success";
-
+import Cancel from "./page/Cancel";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>

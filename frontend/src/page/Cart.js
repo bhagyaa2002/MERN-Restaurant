@@ -47,7 +47,7 @@ const Cart = () => {
 
       toast("Redirect to payment Gateway...!");
 
-      await stripePromise.redirectToCheckout({ sessionId: data.sessionId });
+      await stripePromise.redirectToCheckout({ sessionId: data});
     } else {
       toast("You have not Login!");
       setTimeout(() => {
