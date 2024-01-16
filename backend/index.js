@@ -153,7 +153,7 @@ app.post("/login",(req,res)=>{
 
     //save product in data for this api
     app.post("/uploadProduct",async(req,res)=>{
-        //console.log("line154",req.body)
+        
         const data=productModel(req.body)
         const datasave=await data.save()
         res.send({message:"Upload Successfully"})
@@ -171,7 +171,7 @@ app.post("/login",(req,res)=>{
     console.log(process.env.STRIPE_SECRET_KEY)
     const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
     app.post("/create-checkout-session",async(req,res)=>{
-        //  console.log(req.body)
+      
          try{
             const params={
                submit_type : 'pay',
@@ -200,7 +200,7 @@ app.post("/login",(req,res)=>{
                cancel_url : `${process.env.FRONTEND_URL}/cancel`,
             }
             const session=await stripe.checkout.sessions.create(params) 
-            console.log(session)
+          
          res.status(200).json(session.id)
          }
          catch(err){

@@ -18,7 +18,7 @@ function SignUp() {
     confirmPassword: "",
     image:""
   });
-  console.log(data);
+ 
   const handleShowPassword = () => {
     setShowPassword((preve) => !preve);
   };
@@ -62,7 +62,7 @@ function SignUp() {
         body:JSON.stringify(data)
       })
        const dataRes=await fetchData.json()
-       console.log(dataRes)
+      
         //alert(dataRes.message);
         toast(dataRes.message);
         if(dataRes.alert){
