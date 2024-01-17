@@ -14,16 +14,28 @@ export const productSlice = createSlice({
     addCartItem: (state, action) => {
       const check = state.cartItem.some((el) => el._id === action.payload._id);
       console.log(check);
+
       if (check) {
         toast("Already Item in Cart");
+        state.cartItem.some((el) =>{
+          console.log("before",el)
+        if(el._id === action.payload._id){
+          el.qty=el.qty+1
+        }
+        console.log("after",el)
+        const total = action.payload.price;
+        el.total=el.qty*total
+        } )
+       
       } else {
         toast("Item Added Successfully");
-      }
+      
       const total = action.payload.price;
       state.cartItem = [
         ...state.cartItem,
         { ...action.payload, qty: 1, total: total },
       ];
+    }
     },
 
     deleteCartItem: (state, action) => {
@@ -50,7 +62,7 @@ export const productSlice = createSlice({
 
         const price = state.cartItem[index].price;
         const total = price * qtyDec;
-        state.cartItem[index].total = total;
+        state.cartItem[index].total = total; 
       }
     },
   },

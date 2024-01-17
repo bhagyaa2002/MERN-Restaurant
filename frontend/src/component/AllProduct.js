@@ -22,12 +22,26 @@ const AllProduct = ({ heading }) => {
     setDataFilter(() => [...filter]);
   };
 
+  const handleAllProduct =()=>{
+    setFilterBy("")
+    setDataFilter(() => [...productData]);
+  }
+
   const loadingArrayFeature = new Array(10).fill(null);
 
   return (
     <div className="my-5">
       <h2 className="font-bold text-2xl text-slate-800 mb-4">{heading}</h2>
       <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
+        <div className="rounded-full cursor-pointer flex items-center">
+        <FilterProduct 
+        category="View All" 
+        key="All Products" 
+              isActive={filterby===""}
+              onClick={() => handleAllProduct()}
+              />
+        </div>
+        
         {categoryList[0] ? (
           categoryList.map((el) => (
             <FilterProduct

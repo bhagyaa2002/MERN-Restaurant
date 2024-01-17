@@ -70,6 +70,7 @@ const NewProduct = () => {
         <input type={"text"} name="name" className='bg-slate-200 p-1 my-1' onChange={handleOnChange} value={data.name}/>
         <label htmlFor='category'>Category</label>
         <select className='bg-slate-200 p-1 my-1' id='category' name="category"  onChange={handleOnChange} value={data.category}>
+        
           <option value={"other"}>Select Category</option>
           <option value={"fruit "}>Fruits</option>
           <option value={"vegetable"}>Vegetables</option>

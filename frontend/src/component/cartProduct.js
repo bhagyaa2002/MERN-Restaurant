@@ -29,16 +29,18 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
         </p>
         <div className="flex justify-between">
           <div className="flex gap-3 items-center">
-            <button onClick={()=>dispatch(increaseQty(id))} className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 w-full p-1">
-              <TbPlus />
-            </button>
-            <p className="font-semibold p-1">{qty}</p>
-            <button
+          <button
               onClick={()=>dispatch(decreaseQty(id))}
               className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 w-full p-1"
             >
               <TbMinus />
             </button>
+            <p className="font-semibold p-1">{qty}</p>
+            <button onClick={()=>dispatch(increaseQty(id))} className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 w-full p-1">
+              <TbPlus />
+            </button>
+            
+           
           </div>
           <div className="flex items-center gap-2 font-bold text-slate-700">
             <p>Total :</p>
