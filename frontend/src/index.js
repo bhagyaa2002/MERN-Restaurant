@@ -13,6 +13,7 @@ import Home from "./page/Home";
 import Menu from "./page/Menu";
 import About from "./page/About";
 import Contact from "./page/Contact";
+import Order from "./page/Order";
 import Login from "./page/Login";
 import NewProduct from "./page/NewProduct";
 import SignUp from "./page/SignUp";
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="menu/:filterby" element={<Menu />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="order" element={<Order />} />
       <Route path="login" element={<Login />} />
       <Route path="newproduct" element={<NewProduct />} />
       <Route path="signup" element={<SignUp />} />
