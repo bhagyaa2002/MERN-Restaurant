@@ -36,6 +36,26 @@ const Header = ({ productData }) => {
     console.log("line 8 click");
     // navigate(`/menu/${id}`)
   };
+  const [searchInput,setSearchInput] = useState("")
+  const [listOfProducts,setlistOfProducts]= useState( productData.productList)
+  const handleChange = (value)=>{
+    setIsInputFocused(true)
+    setSearchInput(value)
+   const result= productData.productList.filter((item)=>{
+      return item && item.name && item.name.toLowerCase().includes(value.toLowerCase())
+    })
+    setlistOfProducts(result)
+    console.log("line 47",listOfProducts);
+    
+  }
+
+  const clearSearchInput = () => {
+    console.log("inside lear search");
+    setSearchInput("");
+    setIsInputFocused(false);
+    setlistOfProducts([])
+  };
+
 
   return (
     <div>
@@ -52,11 +72,14 @@ const Header = ({ productData }) => {
               <div className="flex w-full mr-12 ml-32 relative">
                 <input
                   type="text"
-                  className=" bg-slate-200 border-radius-3  w-full rounded p-1 focus-within:outline focus-within:outline-white"
+                  className=" bg-slate-200 border-radius-3  w-full rounded p-1 focus-within:outline focus-within:outline-slate-200"
+                 
                   placeholder=""
-                  onFocus={() => setIsInputFocused(true)}
-                  
-                  onClick={() => setIsInputFocused(!isInputFocused)}
+                  onFocus={() => setIsInputFocused(!isInputFocused)}
+                  // onBlur={()=>setIsInputFocused(false)}
+                  value={searchInput}
+                  onChange={(e)=>handleChange(e.target.value)}
+                  // onClick={() => setIsInputFocused(!isInputFocused)}
                 ></input>
                 {isInputFocused || (
                   <>
@@ -66,14 +89,14 @@ const Header = ({ productData }) => {
                   </>
                 )}
 
-                {isInputFocused ?(
+                {isInputFocused &&listOfProducts&&listOfProducts.length>0 ?(
                   <>
                   <div
                     className="absolute bg-white border border-gray-300 mt-9 p-2 mr-10 rounded max-h-40  overflow-scroll scrollbar-none "
                     style={{ width: inputWidth }} onClick={() => setIsInputFocused(false)}
                   >
-                    {productData.productList.map((el) => (
-                      <SearchCard id={el._id} name={el.name}/>
+                    {listOfProducts.map((el) => (
+                      <SearchCard id={el._id} name={el.name} clearSearchInput={clearSearchInput}/>
                     ))}
                     
                   </div>
