@@ -38,7 +38,7 @@ const Header = () => {
             <Link to={"menu/659406f93b93bd0168a36af6"}>Menu</Link>
             <Link to={"about"}>About</Link>
             <Link to={"contact"}>Contact</Link>
-            <Link to={"order"}>Order</Link>
+            <Link to={"order"}  >Order</Link>
           </nav>
           <div className="text-2xl text-slate-600 relative">
             <Link to={"cart"}>

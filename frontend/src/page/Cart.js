@@ -30,6 +30,12 @@ const Cart = () => {
       );
       console.log("Server Domain:", process.env.REACT_APP_SERVER_DOMAIN);
 
+      const payload= {
+        productCartItem:productCartItem,
+        userId:user._id
+      }
+      console.log("line 37",payload);
+
       const res = await fetch(
         `${process.env.REACT_APP_SERVER_DOMAIN}/create-checkout-session`,
         {
@@ -37,7 +43,7 @@ const Cart = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(productCartItem),
+          body: JSON.stringify(payload),
         }
       );
 

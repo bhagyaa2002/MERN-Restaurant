@@ -1,29 +1,78 @@
-import React from 'react'
-import logo from "../assest/cake.png";
+import React, { useEffect, useState } from "react";
+
+import OrderHistoryCard from "../component/OrderHistoryCard";
+import OrderHistoryCardCopy from "../component/OrderHistoryCardCopy";
+import { useSelector } from "react-redux";
 
 const Order = () => {
-  return (
-    <div className="m-auto flex justify-center items-center">
-    <div className="bg-white p-2 rounded flex w-1/2 justify-around">
-      
-          <div>
-          <img src={logo} className="h-24 w-24" />
-          </div>
-          <div className='mt-9'>Cake</div>
-          <div className=''>
-            <div className='flex gap-12 justify-items-start'>
-            <p>Qty:1</p>
-            <p>Price:100</p>
-            <p>Total:100</p>
-            </div>
-            <div>
-                <p className='place-items-center'>Order Date:10/1/2024</p>
-            </div>
-          </div>
-          <div>gnnnt</div>          
-    </div>
-    </div>
-  )
-}
+  const user = useSelector((state) => state.user);
+  const [orderHistoryList, setorderHistoryList] = useState([]);
 
-export default Order
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("called");
+      console.log(user._id);
+      try {
+        const handleOrder = await fetch(
+          `${process.env.REACT_APP_SERVER_DOMAIN}/fetchAllOrder/${user._id}`);
+
+        const orderDetails = await handleOrder.json();
+        setorderHistoryList(orderDetails)
+        console.log(orderHistoryList);
+  
+  
+      } catch (error) {
+        console.error('Error fetching order details:', error);
+      }
+    };
+  
+    fetchData(); 
+  }, []);
+  useEffect(() => {
+    // This useEffect will log the updated state whenever orderHistoryList changes
+    console.log(orderHistoryList);
+  }, [orderHistoryList]);
+  
+
+
+  return (
+    <div>
+      <p className="flex justify-start text-3xl mt-5 ml-10 font-mono font-black ">My Orders</p>
+      <div className="flex flex-col justify-center items-center pt-3">
+        {
+          orderHistoryList.map((el)=>(
+            
+            <OrderHistoryCardCopy 
+            key={el._id}
+            itemImage= {el.itemImage}
+            itemName= {el.itemName}
+            itemCategory={el.itemCategory}
+            itemQty={el.itemQty}
+            itemPrice= {el.itemPrice}
+            itemTotal={el.itemTotal}
+            orderTimestamp= {el.orderTimestamp}
+            activeStatus={el.activeStatus}
+            
+            />
+          ))
+          
+        }
+        
+        
+        {/* <OrderHistoryCardCopy />
+        <OrderHistoryCard />
+        <OrderHistoryCardCopy />
+        <OrderHistoryCard />
+        <OrderHistoryCardCopy />
+        <OrderHistoryCard />
+        <OrderHistoryCardCopy />
+        <OrderHistoryCard />
+        <OrderHistoryCard />
+        <OrderHistoryCard /> */}
+      </div>
+    </div>
+  );
+};
+
+export default Order;
