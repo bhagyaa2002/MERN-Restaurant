@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import Lottie from "react-lottie";
+import success from "../assest/cancel1.json";
 
 const Cancel = () => {
   const {id} = useParams();
@@ -32,11 +34,23 @@ const Cancel = () => {
   
     fetchData(); 
   }, [id]);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: success, // the path to your animation data
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
  
   console.log(id);
   return (
-    <div className='bg-red-200 w-full max-w-md m-auto h-36 flex justify-center items-center font-semibold text-lg'>
-        <p>Payment is Canelled</p>
+    <div className="relative flex flex-col justify-center items-center">
+      
+      <div className="flex justify-center items-center mt-40">
+        <Lottie options={defaultOptions} height={200} width={200} />
+      </div>
+      <p className="absolute text-xl font-semibold mt-96">Payment Failed</p>
     </div>
   )
 }

@@ -72,9 +72,9 @@ const Header = ({ productData }) => {
               <div className="flex w-full mr-12 ml-32 relative">
                 <input
                   type="text"
-                  className=" bg-slate-200 border-radius-3  w-full rounded p-1 focus-within:outline focus-within:outline-slate-200"
+                  className=" bg-slate-100 border-radius-3  w-full rounded p-1 focus-within:outline focus-within:outline-slate-200"
                  
-                  placeholder=""
+                  placeholder= {isInputFocused===true?"":"       Search"}
                   onFocus={() => setIsInputFocused(!isInputFocused)}
                   // onBlur={()=>setIsInputFocused(false)}
                   value={searchInput}
