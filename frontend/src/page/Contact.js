@@ -79,7 +79,7 @@ const Contact = () => {
       <div className="flex justify-center items-center mt-96 ">
         <p className="text-4xl ">Our Services</p>
       </div>
-      <div className="flex mt-6 justify-items-center justify-around mb-6 bg-yellow-100 pt-3 pb-3 ">
+      <div className="flex mt-6 justify-items-center justify-around  bg-yellow-100 pt-3 pb-3 ">  
         <div className="flex flex-col bg-indigo-200 w-1/5 h-1/5 items-center justify-center hover:shadow-2xl transition duration-300 hover:scale-105">
           <p className="text-xl font-semibold mt-3">Fast Delivery</p>
           <img src={icons} className="mt-6 h-36" />
@@ -106,8 +106,8 @@ const Contact = () => {
           </p>
         </div>
       </div>
-      <div className=" flex justify-center items-center mb-6 ">
-        <p className="text-4xl ">Contact Us</p>
+      <div className=" flex justify-center items-center  ">
+        {/* <p className="text-4xl ">Contact Us</p> */}
       </div>
       <div className="flex justify-around bg-gray-950 pt-6">
         <div className="flex flex-col text-white  w-1/5 h-1/5 items-start justify-center mb-9">

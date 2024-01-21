@@ -216,7 +216,7 @@ app.post("/create-checkout-session", async (req, res) => {
       cancel_url: `${process.env.FRONTEND_URL}/cancel/${timeStamp}`,
     };
     const session = await stripe.checkout.sessions.create(params);
-
+    console.log(session.url);
     res.status(200).json(session.id);
   } catch (err) {
     console.log(err);

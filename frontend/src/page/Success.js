@@ -25,12 +25,14 @@ const Success = () => {
         );
 
         const orderDetails = await handleOrder.json();
+        
       } catch (error) {
         console.error("Error fetching order details:", error);
       }
     };
+ 
+    
 
-    fetchData();
   }, [id]);
   const defaultOptions = {
     loop: true,
@@ -40,6 +42,11 @@ const Success = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
+  setTimeout(() => {
+    console.log("timeout called outside");
+    window.close();
+  }, 10000);
 
   console.log(id);
   return (

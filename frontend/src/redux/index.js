@@ -7,3 +7,6 @@ export const store = configureStore({
         product:productSliceReducer
     },
   })
+
+
+

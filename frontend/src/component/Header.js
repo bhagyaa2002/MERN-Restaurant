@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assest/logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi";
@@ -9,7 +9,47 @@ import { toast } from "react-hot-toast";
 import { FaSearch } from "react-icons/fa";
 
 import SearchCard from "./SearchCard";
+import { loginRedux } from "../redux/userSlice";
 const Header = ({ productData }) => {
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    console.log(storedUser);
+    if(storedUser===null){
+      console.log("line 18");
+    }
+    else{
+      console.log("line 21");
+      dispatch(loginRedux(storedUser))
+    }
+    const handleOutsideClick = (e) => {
+      // Check if the clicked element is not part of the profile icon
+      if (
+        !e.target.closest(".text-slate-600") &&
+        !e.target.closest(".text-3xl") &&
+        !e.target.closest(".drop-shadow-md")
+      ) {
+        setShowMenu(false);
+        setSearchInput("");
+    setIsInputFocused(false);
+    setlistOfProducts([])
+      }
+
+      
+    };  // Add the event listener to handle outside clicks
+    window.addEventListener("click", handleOutsideClick);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+
+    
+  }, []);
+
+
+
+
   const [showMenu, setShowMenu] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const userData = useSelector((state) => state.user);
@@ -21,8 +61,12 @@ const Header = ({ productData }) => {
   const handleShowMenu = () => {
     setShowMenu((preve) => !preve);
   };
+  const handleShowMenuNew = () => {
+    setShowMenu(false);
+  };
   const handleLogout = () => {
     dispatch(logoutRedux());
+    localStorage.setItem('user', JSON.stringify(null));
     toast("Logout Successfully");
   };
 
@@ -34,6 +78,7 @@ const Header = ({ productData }) => {
   const handleClick = () => {
     
     console.log("line 8 click");
+    setIsInputFocused(true)
     // navigate(`/menu/${id}`)
   };
   const [searchInput,setSearchInput] = useState("")
@@ -69,7 +114,7 @@ const Header = ({ productData }) => {
             </Link>
 
             <div className="flex items-center gap-4 md:gap-7 w-full">
-              <div className="flex w-full mr-12 ml-32 relative">
+              <div className="flex w-full mr-12 ml-32 relative"  onClick={handleShowMenuNew} >
                 <input
                   type="text"
                   className=" bg-slate-100 border-radius-3  w-full rounded p-1 focus-within:outline focus-within:outline-slate-200"
@@ -79,7 +124,7 @@ const Header = ({ productData }) => {
                   // onBlur={()=>setIsInputFocused(false)}
                   value={searchInput}
                   onChange={(e)=>handleChange(e.target.value)}
-                  // onClick={() => setIsInputFocused(!isInputFocused)}
+                  onClick={handleClick}
                 ></input>
                 {isInputFocused || (
                   <>
@@ -103,7 +148,7 @@ const Header = ({ productData }) => {
                   </>
                 ):<></>}
               </div>
-
+              <div onClick={handleShowMenuNew}>
               <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex ">
                 <Link
                   to={""}
@@ -157,7 +202,8 @@ const Header = ({ productData }) => {
                 </Link>
                 {/* <Link to={"order"} className={location.pathname === '/order' ? 'text-red-500' : 'text-black'}>Order</Link> */}
               </nav>
-              <div className="text-2xl text-slate-600 relative">
+              </div>
+              <div className="text-2xl text-slate-600 relative" onClick={handleShowMenuNew}>
                 <Link to={"cart"}>
                   <BsCartFill />
                   <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center">

@@ -5,6 +5,8 @@ import emptyCartImage from "../assest/empty.gif";
 import { toast } from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
+import Lottie from "react-lottie";
+import empty from "../assest/emptycart.json";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -52,6 +54,11 @@ const Cart = () => {
       console.log(data);
 
       toast("Redirect to payment Gateway...!");
+      //const checkoutUrl = `https://checkout.stripe.com/pay/${data}`;
+    //  const newTab= window.open(data, '_blank');
+    //   setTimeout(() => {
+    //     newTab.close();
+    //   }, 10000);
 
       await stripePromise.redirectToCheckout({ sessionId: data});
     } else {
@@ -61,11 +68,19 @@ const Cart = () => {
       }, 1000);
     }
   };
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: empty, // the path to your animation data
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <div className="p-2 md:p-4">
       <h3 className="text-lg md:text-2xl font-bold text-slate-600">
-        Your Cart Items
+        My Cart Items
       </h3>
       {productCartItem[0] ? (
         <div className="my-4 flex gap-3">
@@ -109,8 +124,9 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex w-full justify-center items-center flex-col">
-          <img src={emptyCartImage} className="w-full max-w-sm" />
-          <p className="text-slate-500 text-3xl font-bold">Empty Cart</p>
+          {/* <img src={emptyCartImage} className="w-full max-w-sm" /> */}
+          <Lottie options={defaultOptions} height={400} width={400} />
+          <p className=" text-3xl font-bold">Empty Cart</p>
         </div>
       )}
     </div>

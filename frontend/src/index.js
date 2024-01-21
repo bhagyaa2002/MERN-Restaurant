@@ -17,8 +17,9 @@ import Order from "./page/Order";
 import Login from "./page/Login";
 import NewProduct from "./page/NewProduct";
 import SignUp from "./page/SignUp";
-import { store } from "./redux/index";
+import { store ,persistor} from "./redux/index";
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react';
 import Cart from "./page/Cart";
 import Success from "./page/Success";
 import Cancel from "./page/Cancel";
@@ -45,7 +46,9 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
+     
     <RouterProvider router={router} />
+    
   </Provider>
 );
 

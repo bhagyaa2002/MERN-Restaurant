@@ -64,6 +64,7 @@ const Login = () => {
        
        if(dataRes.alert){
         dispatch(loginRedux(dataRes))
+        localStorage.setItem('user', JSON.stringify(dataRes));
         console.log("line 65 in login JS",dataRes);
         setTimeout(()=>{
           navigate("/")
