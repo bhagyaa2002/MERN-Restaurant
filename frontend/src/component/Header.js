@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../assest/logo.png";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import logo from "../assest/foodizo5.png";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
 import { toast } from "react-hot-toast";
 import { FaSearch } from "react-icons/fa";
-
 import SearchCard from "./SearchCard";
 import { loginRedux } from "../redux/userSlice";
 const Header = ({ productData }) => {
@@ -57,7 +56,7 @@ const Header = ({ productData }) => {
   console.log("line 12 in header JS", userData.email);
   console.log("line 13", productData.productList);
   const dispatch = useDispatch();
-
+  const navigate=useNavigate()
   const handleShowMenu = () => {
     setShowMenu((preve) => !preve);
   };
@@ -67,7 +66,10 @@ const Header = ({ productData }) => {
   const handleLogout = () => {
     dispatch(logoutRedux());
     localStorage.setItem('user', JSON.stringify(null));
+
     toast("Logout Successfully");
+    navigate("/")
+
   };
 
   const cartItemNumber = useSelector((state) => state.product.cartItem);
@@ -108,7 +110,7 @@ const Header = ({ productData }) => {
         <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
           <div className="flex items-center h-full justify-between">
             <Link to={""}>
-              <div className="h-10">
+              <div className=" ml-6 h-10">
                 <img src={logo} className="h-full" />
               </div>
             </Link>

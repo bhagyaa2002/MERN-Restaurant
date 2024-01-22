@@ -187,6 +187,7 @@ app.post("/create-checkout-session", async (req, res) => {
       };
       const data = cartModel(payloadData);
       const datasave = await data.save();
+      console.log("data save",datasave);
     });
 
     const params = {
@@ -237,7 +238,7 @@ const schemaOrder = mongoose.Schema({
 });
 const orderModel = mongoose.model("order", schemaOrder);
 app.post("/orderDetails", async (req, res) => {
-  //console.log(req.body);
+  console.log(req.body);
   const orderTimestamp = req.body.id;
   cartModel.find({ orderTimestamp: orderTimestamp }).then((result) => {
     // console.log(result)

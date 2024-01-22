@@ -4,6 +4,8 @@ import OrderHistoryCard from "../component/OrderHistoryCard";
 import OrderHistoryCardCopy from "../component/OrderHistoryCardCopy";
 import { useSelector } from "react-redux";
 
+import Lottie from "react-lottie";
+import noOrder from "../assest/no-orders.json";
 const Order = () => {
   const user = useSelector((state) => state.user);
   const [orderHistoryList, setorderHistoryList] = useState([]);
@@ -33,12 +35,45 @@ const Order = () => {
     // This useEffect will log the updated state whenever orderHistoryList changes
     console.log(orderHistoryList);
   }, [orderHistoryList]);
-  
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: noOrder, // the path to your animation data
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const [shouldRenderLottie, setShouldRenderLottie] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShouldRenderLottie(true);
+    }, 500); // 5000 milliseconds = 5 seconds
+
+    // Cleanup the timeout on component unmount
+    return () => clearTimeout(timeoutId);
+  }, []);
 
 
   return (
+    orderHistoryList.length===0? ( <div className="relative flex flex-col justify-center items-center">
+        {shouldRenderLottie && (
+          <>
+    <div className="flex justify-center items-center mt-12">
+  
+      <Lottie options={defaultOptions} height={400} width={400} />
+    </div>
+    <p className="absolute text-xl font-semibold mt-60">No Orders Placed Yet</p>
+    </>
+    )}
+    
+   
+  </div> ):(
+
+
     <div>
-      <p className="flex justify-start text-3xl mt-5 ml-10 font-mono font-black ">My Orders</p>
+      <p className="flex justify-start text-3xl mt-5 ml-16   ">My Orders</p>
       <div className="flex flex-col justify-center items-center pt-3">
         {
           orderHistoryList.map((el)=>(
@@ -72,6 +107,7 @@ const Order = () => {
         <OrderHistoryCard /> */}
       </div>
     </div>
+  )
   );
 };
 

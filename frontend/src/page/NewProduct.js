@@ -80,6 +80,8 @@ const NewProduct = () => {
           <option value={"rice"}>Rice</option>
           <option value={"cake"}>Cake</option>
           <option value={"burger"}>Burger</option>
+          <option value={"snacks"}>Snacks</option>
+          <option value={"beverages"}>Beverages</option>
         </select>
       <label htmlFor='image'>Image
       <div className='h-40 w-full bg-slate-300 my-3 rounded flex items-center justify-center cursor-pointer'>

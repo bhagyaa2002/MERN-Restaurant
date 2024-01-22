@@ -53,7 +53,7 @@ const OrderHistoryCardCopy = ({
         <img src={itemImage} className="h-20 w-24 object-fit rounded-xl" />
       </div>
       <div className="flex flex-col items-center justify-center w-full -ml-48">
-        <div className=" flex items-center text-xl  font-mono ">{itemName}</div>
+        <div className=" flex items-center justify-center text-xl  font-mono text-center">{itemName}</div>
         <div className=" flex items-center font-mono font-thin text-slate-500">
           {itemCategory}
         </div>

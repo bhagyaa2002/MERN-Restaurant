@@ -12,6 +12,7 @@ const Success = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("inside fetchdata");
       try {
         const handleOrder = await fetch(
           `${process.env.REACT_APP_SERVER_DOMAIN}/orderDetails`,
@@ -31,9 +32,11 @@ const Success = () => {
       }
     };
  
-    
+    fetchData();
 
   }, [id]);
+
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -43,10 +46,7 @@ const Success = () => {
     },
   };
 
-  setTimeout(() => {
-    console.log("timeout called outside");
-    window.close();
-  }, 10000);
+
 
   console.log(id);
   return (

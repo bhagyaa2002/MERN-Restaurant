@@ -6,6 +6,7 @@ import { GrPrevious } from 'react-icons/gr';
 import { GrNext } from 'react-icons/gr';
 import FilterProduct from '../component/FilterProduct';
 import AllProduct from '../component/AllProduct';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
@@ -38,20 +39,17 @@ const Home = () => {
             />
           </div>
           <h2 className="text-4xl md:text-7xl font-bold py-3">
-            The Fasted Delivery in{" "}
-            <span className="text-red-600 text-">Your Home</span>
+            The Fastest Delivery to{" "}
+            <span className="" style={{color: '#D94E28'}}>Your Home</span>
           </h2>
           <p className="py-3 text-base ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries
+          Welcome to Foodizo – your one-stop culinary destination! Dive into a world of deliciousness as we bring you fresh vegetables, juicy fruits, tempting cakes, creamy ice creams, and a variety of beverages, all conveniently delivered to your doorstep. Our website is designed for simplicity and ease, ensuring that your experience is both understandable and enjoyable. Whether you're in the mood for wholesome veggies or indulgent desserts, Foodizo has you covered. Discover the joy of flavorful and hassle-free dining – your favorite treats are just a click away!
           </p>
-          <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md">
+          <Link to={`/menu/659406f93b93bd0168a36af6`}>
+          <button className="font-bold  text-slate-200 px-4 py-2 rounded-md" style={{ backgroundColor: '#D94E28' }} >
             Order Now
           </button>
-        
+          </Link>
 
         </div>
 
