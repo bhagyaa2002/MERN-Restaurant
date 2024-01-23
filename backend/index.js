@@ -96,10 +96,14 @@ app.post("/login", (req, res) => {
     //console.log(req.body)
     // const data1 = new productModel({name:"sham",category:'male',image:"",price:"1000",description:'male'});
     //       const save = await data1.save();
-    const { email } = req.body;
+    const { email,password } = req.body;
+    console.log("line 100",req.body);
     userModel
       .findOne({ email: email })
       .then((result) => {
+        if(password===result.password){
+
+        console.log("line 104",result);
         dataSend = {
           _id: result._id,
           firstName: result.firstName,
@@ -113,6 +117,14 @@ app.post("/login", (req, res) => {
           alert: true,
           data: dataSend,
         });
+      }
+      else{res.send({
+        message: "Password is invalid",
+        alert: false,
+        data: {},
+      });
+
+      }
       })
       .catch((error) => {
         console.log(error);

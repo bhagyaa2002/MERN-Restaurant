@@ -1,29 +1,45 @@
-import React from 'react'
-import bgImage from '../assest/cake.png'
-import biriyani1 from '../assest/biryani2.png'
-import biriyani2 from '../assest/biryani3.png'
-import biriyani3 from '../assest/biryani5.png'
-import Vector from '../assest/vector3.png'
+import React, { useEffect } from "react";
 
-const ImageList=[
+import BiryaniImg1 from "../assest/biryani3.png";
+import BiryaniImg2 from "../assest/biryani5.png";
+import BiryaniImg3 from "../assest/biryani2.png";
+import Mixfruit from "../assest/Mix fruits1.png";
+import Vector from "../assest/vector3.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+const ImageList = [
   {
-    id:1,
-    image:biriyani1,
+    id: 1,
+    img: BiryaniImg1,
   },
   {
-    id:2,
-    image:biriyani2,
+    id: 2,
+    img: BiryaniImg2,
   },
   {
-    id:3,
-    image:biriyani3 ,
+    id: 3,
+    img: BiryaniImg3,
+  },
+  {
+    id: 4,
+    img: Mixfruit,
   },
 ];
-const About = () => {
-  
-  const [imageId, setImageId] = React.useState(biriyani1);
+
+const Carosel = () => {
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 500,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
+  const [imageId, setImageId] = React.useState(BiryaniImg1);
 
   const bgImage = {
+    
     backgroundImage: `url(${Vector})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -31,12 +47,30 @@ const About = () => {
     height: "100%",
     width: "100%",
   };
+
+  useEffect(() => {
+    // Change image every 5 seconds
+    const intervalId = setInterval(() => {
+      // Get the index of the current image
+      const currentIndex = ImageList.findIndex((item) => item.img === imageId);
+
+      // Calculate the index of the next image
+      const nextIndex = (currentIndex + 1) % ImageList.length;
+
+      // Set the next image
+      setImageId(ImageList[nextIndex].img);
+    }, 4000);
+
+    // Clear the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [imageId]);
+
   return (
     <>
-    <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
       <div
-        className="min-h-[550px] sm:min-h-[600px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
+        className="min-h-[550px] sm:min-h-[600px] bg-green-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
         style={bgImage}
+        
       >
         <div className="container pb-8 sm:pb-0">
           <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -76,7 +110,7 @@ const About = () => {
                   className="w-[300px] sm:w-[450px] sm:scale-125  mx-auto spin "
                 />
               </div>
-              <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute bottom-[0px] lg:-right-10 bg-white/30 rounded-full">
+              <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-40 justify-center gap-4 absolute bottom-[0px] lg:-right-10 bg-white/30 rounded-full">
                 {ImageList.map((item) => (
                   <img
                     data-aos="zoom-in"
@@ -86,10 +120,10 @@ const About = () => {
                     onClick={() => {
                       setImageId(
                         item.id === 1
-                          ? biriyani1
+                          ? BiryaniImg1
                           : item.id === 2
-                          ? biriyani2
-                          : biriyani3
+                          ? BiryaniImg2
+                          :item.id===3? BiryaniImg3:Mixfruit
                       );
                     }}
                     alt="biryani img"
@@ -101,9 +135,8 @@ const About = () => {
           </div>
         </div>
       </div>
-      </div>
     </>
   );
-}
+};
 
-export default About
+export default Carosel;

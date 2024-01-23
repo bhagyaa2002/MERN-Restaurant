@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRedux } from "../redux/userSlice";
-
+import bcrypt from "bcryptjs";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -47,12 +47,19 @@ const Login = () => {
 
     const {email,password}=data
     if(email && password){
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync(
+        password,
+        "$2a$10$CwTycUXWue0Thq9StjUM0u"
+      );
+
+      const payload={ email: data.email, password: hashedPassword }
       const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/Login`,{
         method:"POST",
         headers:{
           "content-type":"application/json"
         },
-        body:JSON.stringify(data)
+        body:JSON.stringify(payload)
       })
        const dataRes=await fetchData.json()
 

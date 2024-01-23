@@ -19,14 +19,15 @@ function App() {
       dispatch(setDataProduct(resData))
     })()
   },[])
-
+  
   
   return (
     <> 
+    {/* style={{ backgroundColor: '#fffbeb' }} */}
       <Toaster />
       <div>
         <Header productData={productData}/>
-        <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]">
+        <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]" >
           <Outlet />
         </main>
       </div>

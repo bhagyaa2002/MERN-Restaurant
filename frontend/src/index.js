@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import Home from "./page/Home";
 import Menu from "./page/Menu";
-import About from "./page/About";
+// import About from "./page/About";
 import Contact from "./page/Contact";
 import Order from "./page/Order";
 import Login from "./page/Login";
@@ -29,7 +29,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       {/*<Route path="menu" element={<Menu />} />*/}
       <Route path="menu/:filterby" element={<Menu />} />
-      <Route path="about" element={<About />} />
+      {/* <Route path="about" element={<About />} /> */}
       <Route path="contact" element={<Contact />} />
       <Route path="order" element={<Order />} />
       <Route path="login" element={<Login />} />

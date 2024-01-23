@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../assest/foodizo5.png";
+import logo from "../assest/foodizo7.png";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
@@ -172,7 +172,7 @@ const Header = ({ productData }) => {
                 >
                   Menu
                 </Link>
-                <Link
+                {/* <Link
                   to={"about"} 
                   className={
                     location.pathname === "/about"
@@ -181,7 +181,7 @@ const Header = ({ productData }) => {
                   }
                 >
                   About
-                </Link> 
+                </Link>  */}
                 <Link
                   to={"contact"}
                   className={

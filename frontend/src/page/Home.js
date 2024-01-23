@@ -7,6 +7,7 @@ import { GrNext } from 'react-icons/gr';
 import FilterProduct from '../component/FilterProduct';
 import AllProduct from '../component/AllProduct';
 import { Link } from 'react-router-dom';
+import Carosel from './Carosel';
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
@@ -28,6 +29,8 @@ const Home = () => {
  
   
   return (
+    <>
+    <Carosel/>
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-4 py-2'>
         <div className="md:w-1/2">
@@ -117,6 +120,7 @@ const Home = () => {
      <AllProduct heading={"Your Product"} />
      
     </div>
+    </>
   );
 };
 

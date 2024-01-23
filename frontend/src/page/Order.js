@@ -73,7 +73,10 @@ const Order = () => {
 
 
     <div>
-      <p className="flex justify-start text-3xl mt-5 ml-16   ">My Orders</p>
+      {/* <p className="flex justify-start text-3xl mt-5 ml-16   ">My Orders</p> */}
+      <h3 className="text-lg md:text-2xl font-bold text-slate-600 p-4">
+        My Orders
+      </h3>
       <div className="flex flex-col justify-center items-center pt-3">
         {
           orderHistoryList.map((el)=>(
