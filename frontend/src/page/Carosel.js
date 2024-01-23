@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 
-import BiryaniImg1 from "../assest/biryani3.png";
-import BiryaniImg2 from "../assest/biryani5.png";
+import BiryaniImg1 from "../assest/ice-cream3.png";
+import BiryaniImg2 from "../assest/vege-7.png";
 import BiryaniImg3 from "../assest/biryani2.png";
 import Mixfruit from "../assest/Mix fruits1.png";
 import Vector from "../assest/vector3.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from 'react-router-dom';
 const ImageList = [
   {
     id: 1,
@@ -30,7 +31,7 @@ const Carosel = () => {
   useEffect(() => {
     AOS.init({
       offset: 100,
-      duration: 500,
+      duration: 5000,
       easing: "ease-in-sine",
       delay: 100,
     });
@@ -68,7 +69,7 @@ const Carosel = () => {
   return (
     <>
       <div
-        className="min-h-[550px] sm:min-h-[600px] bg-green-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
+        className="min-h-[550px] sm:min-h-[600px] bg-yellow-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
         style={bgImage}
         
       >
@@ -88,14 +89,24 @@ const Carosel = () => {
                 </span>{" "}
                 Zone
               </h1>
-              <p className="text-sm ">
+              {/* <p className="text-sm ">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
                 reiciendis inventore iste ratione ex alias quis magni at optio
-              </p>
+              </p> */}
+              <p className="py-3 text-xl ">
+          Welcome to Foodizo – Your one-stop culinary destination! Dive into a world of deliciousness as we bring you fresh vegetables, juicy fruits, tempting cakes, creamy ice creams, and a variety of beverages, all conveniently delivered to your doorstep. Our website is designed for simplicity and ease, ensuring that your experience is both understandable and enjoyable. Whether you're in the mood for wholesome veggies or indulgent desserts, Foodizo has you covered. Discover the joy of flavorful and hassle-free dining – your favorite treats are just a click away!
+          </p>
               <div>
-                <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full">
+              <Link to={`/menu/659406f93b93bd0168a36af6`}>
+                <button className="hover:scale-105 duration-200 text-white py-2 px-4 rounded-full" style={{ backgroundColor: '#D94E28' }}>
                   Order Now
                 </button>
+                
+           {/* <button className="font-bold  text-slate-200 px-4 py-2 rounded-full" style={{ backgroundColor: '#D94E28' }} >  */}
+          
+            {/* Order Now
+          </button> */}
+          </Link>
               </div>
             </div>
             {/* Image section */}

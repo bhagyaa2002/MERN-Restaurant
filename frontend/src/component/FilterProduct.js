@@ -5,7 +5,7 @@ const FilterProduct = ({category,onClick,isActive})  => {
   return (
     
     <div onClick={onClick}>
-      <div className={`text-3xl p-5 rounded-full cursor-pointer flex items-center h-30 w-30 ${isActive ? "bg-red-600 text-white" : "bg-yellow-500"}`}>
+      <div className={`text-3xl p-5 rounded-full cursor-pointer flex items-center h-30 w-30 ${isActive ? "bg-red-500 text-white" : "bg-yellow-500"}`}>
             <CiForkAndKnife />
               </div>
               <p className='text-center font-medium my-1 capitalize'>{category}</p>

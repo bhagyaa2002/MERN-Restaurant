@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import AllProduct from '../component/AllProduct';
 import { addCartItem, setDataProduct } from '../redux/productSlice';
+import Footer from '../component/Footer';
+
 
 
 const Menu = () => {
@@ -97,6 +99,7 @@ const Menu = () => {
     <AllProduct heading={"Related Product"} />
   </div>)
   }
+     <Footer />
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import Lottie from "react-lottie";
 import success from "../assest/cancel1.json";
+import Footer from '../component/Footer';
 
 const Cancel = () => {
   const {id} = useParams();
@@ -45,6 +46,7 @@ const Cancel = () => {
  
   console.log(id);
   return (
+    <>
     <div className="relative flex flex-col justify-center items-center">
       
       <div className="flex justify-center items-center mt-40">
@@ -52,6 +54,8 @@ const Cancel = () => {
       </div>
       <p className="absolute text-xl font-semibold mt-96">Payment Failed</p>
     </div>
+    <Footer />
+    </>
   )
 }
 

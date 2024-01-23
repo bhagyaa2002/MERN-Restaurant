@@ -16,7 +16,7 @@ const dispatch=useDispatch()
     
   }
   return (
-    <div className="w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col">
+    <div className="w-full min-w-[200px] max-w-[200px] bg-white scale-95 drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col hover:shadow-2xl transition duration-300 hover:scale-100">
       {image ? (
         <>
           <Link to={`/menu/${id}`} onClick={()=>window.scrollTo({top:"0",behavior:"smooth"})}>

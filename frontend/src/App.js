@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import { setDataProduct } from "./redux/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "./component/Footer";
 
 function App() {
   const dispatch=useDispatch()
@@ -18,6 +19,9 @@ function App() {
       const resData=await res.json()
       dispatch(setDataProduct(resData))
     })()
+    console.log('Current Path:', window.location.pathname);
+console.log('Condition:', !(window.location.pathname === '/login' || window.location.pathname === '/signup'));
+
   },[])
   
   
@@ -30,6 +34,8 @@ function App() {
         <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]" >
           <Outlet />
         </main>
+        {!(window.location.pathname.toLowerCase() === '/login' || window.location.pathname.toLowerCase() === '/signup') && <Footer />}
+
       </div>
     </>
   );

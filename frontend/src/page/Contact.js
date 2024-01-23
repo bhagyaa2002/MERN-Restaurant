@@ -80,7 +80,7 @@ const Contact = () => {
         <p className="text-4xl ">Our Services</p>
       </div>
       <div className="flex mt-6 justify-items-center justify-around  bg-yellow-100 pt-3 pb-3 ">  
-        <div className="flex flex-col bg-indigo-200 w-1/5 h-1/5 items-center justify-center hover:shadow-2xl transition duration-300 hover:scale-105">
+        <div className="flex flex-col  bg-indigo-200 w-1/5 h-1/5 items-center justify-center hover:shadow-2xl transition duration-300 hover:scale-105">
           <p className="text-xl font-semibold mt-3">Fast Delivery</p>
           <img src={icons} className="mt-6 h-36" />
           <p className="mt-6 text-center mb-3">
@@ -109,71 +109,7 @@ const Contact = () => {
       <div className=" flex justify-center items-center  ">
         {/* <p className="text-4xl ">Contact Us</p> */}
       </div>
-      <div className="flex justify-around bg-gray-950 pt-6">
-        <div className="flex flex-col text-white  w-1/5 h-1/5 items-start justify-center mb-9">
-          <div className="flex">
-            {" "}
-            <img src={address} className="w-6 h-6 mr-3" />
-            <p className="text-xl font-semibold mb-4">Address</p>
-          </div>
-          <p className="">Natural Fresh PVT LTD</p>
-          <p className="">2-1/24, Hustle Hub</p>
-          <p className="">3rd cross,8th main </p>
-          <p className="">Basavanagudi</p>
-          <p className="">Bengaluru-560001</p>
-        </div>
-        <div className="flex flex-col text-white w-1/5 h-1/5 items-start justify-center">
-          <p className="text-xl font-semibold mb-4">Links</p>
-          <Link
-                  to={"/"}
-                  
-                >
-                  Home
-                </Link>
-                <Link
-                  to={"/menu/659406f93b93bd0168a36af6"}
-                 
-                >
-                  Menu
-                </Link>
-                <Link
-                  to={"/about"} 
-                  
-                >
-                  About
-                </Link> 
-                <Link
-                  to={"/contact"}
-                 
-                >
-                  Contact
-                </Link>
-                <Link
-                  to={"/order"}
-                 
-                >
-                  Order
-                </Link>
-          
-        </div>
-        <div className="flex flex-col  text-white w-1/5 h-1/5 items-start justify-start ">
-        <p className="mb-4 text-xl font-semibold">Support</p>
-          <div className="flex"><img src={mail} className="w-6 h-6 mr-3" />
-          <p className="">support@naturefresh.com</p></div>
-          <div className="flex mt-3"><img src={call} className="w-6 h-6 mr-3" />
-          <p className="">123-456-7890</p></div>
-          
-        </div>
-        <div className="flex flex-col text-white w-1/5 h-1/5 items-start ">
-          <p className="mb-4 text-xl font-semibold">Connect With Us</p>
-          <div className="flex">
-            <img src={insta} className="w-6 h-6 mr-3" />
-            <img src={whatsapp} className="w-6 h-6 mr-3" />
-            <img src={twitter} className="w-6 h-6 mr-3" />
-            <img src={mail} className="w-6 h-6 mr-3" />
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

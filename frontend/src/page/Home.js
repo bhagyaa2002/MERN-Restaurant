@@ -6,7 +6,7 @@ import { GrPrevious } from 'react-icons/gr';
 import { GrNext } from 'react-icons/gr';
 import FilterProduct from '../component/FilterProduct';
 import AllProduct from '../component/AllProduct';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Carosel from './Carosel';
 
 const Home = () => {
@@ -34,29 +34,29 @@ const Home = () => {
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-4 py-2'>
         <div className="md:w-1/2">
-        <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full">
+        {/* <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full">
             <p className="text-sm font-medium text-slate-900">Bike Delivery</p>
             <img
               src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
               className="h-7"
             />
-          </div>
-          <h2 className="text-4xl md:text-7xl font-bold py-3">
+          </div> */}
+          {/* <h2 className="text-4xl md:text-7xl font-bold py-3">
             The Fastest Delivery to{" "}
             <span className="" style={{color: '#D94E28'}}>Your Home</span>
-          </h2>
-          <p className="py-3 text-base ">
+          </h2> */}
+          {/* <p className="py-3 text-base ">
           Welcome to Foodizo – your one-stop culinary destination! Dive into a world of deliciousness as we bring you fresh vegetables, juicy fruits, tempting cakes, creamy ice creams, and a variety of beverages, all conveniently delivered to your doorstep. Our website is designed for simplicity and ease, ensuring that your experience is both understandable and enjoyable. Whether you're in the mood for wholesome veggies or indulgent desserts, Foodizo has you covered. Discover the joy of flavorful and hassle-free dining – your favorite treats are just a click away!
-          </p>
-          <Link to={`/menu/659406f93b93bd0168a36af6`}>
+          </p> */}
+          {/* <Link to={`/menu/659406f93b93bd0168a36af6`}>
           <button className="font-bold  text-slate-200 px-4 py-2 rounded-md" style={{ backgroundColor: '#D94E28' }} >
             Order Now
           </button>
-          </Link>
+          </Link> */}
 
         </div>
 
-        <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
+         {/* <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
           {homeProductCardList[0] ? (
             homeProductCardList.map((el) => (
               <HomeCard
@@ -74,8 +74,8 @@ const Home = () => {
               <HomeCard key={index+"loading"} loading={"Loading..."} />
             ))
           )}
-        </div>
-      </div>
+         </div> */}
+      </div> 
 
       <div className=''>
         <div className='flex w-full items-center'>

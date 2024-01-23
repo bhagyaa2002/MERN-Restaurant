@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
 import Lottie from "react-lottie";
 import empty from "../assest/emptycart.json";
+import Footer from "../component/Footer";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -78,6 +79,7 @@ const Cart = () => {
   };
 
   return (
+    <>
     <div className="p-2 md:p-4">
       <h3 className="text-lg md:text-2xl font-bold text-slate-600">
         My Cart Items
@@ -129,7 +131,10 @@ const Cart = () => {
           <p className=" text-3xl font-bold">Empty Cart</p>
         </div>
       )}
+    
     </div>
+      {/* <Footer /> */}
+      </>
   );
 };
 
