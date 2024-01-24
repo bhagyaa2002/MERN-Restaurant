@@ -57,11 +57,18 @@ const Order = () => {
 
 
   return (
+    <>
+    <h3 className="text-lg md:text-2xl font-bold text-slate-600 p-4">
+        My Orders
+      </h3>
+    {
     orderHistoryList.length===0? ( <div className="relative flex flex-col justify-center items-center">
+        
         {shouldRenderLottie && (
           <>
+       
     <div className="flex justify-center items-center mt-12">
-  
+    
       <Lottie options={defaultOptions} height={400} width={400} />
     </div>
     <p className="absolute text-xl font-semibold mt-60">No Orders Placed Yet</p>
@@ -74,9 +81,7 @@ const Order = () => {
 
     <div>
       {/* <p className="flex justify-start text-3xl mt-5 ml-16   ">My Orders</p> */}
-      <h3 className="text-lg md:text-2xl font-bold text-slate-600 p-4">
-        My Orders
-      </h3>
+      
       <div className="flex flex-col justify-center items-center pt-3">
         {
           orderHistoryList.map((el)=>(
@@ -96,7 +101,7 @@ const Order = () => {
           ))
           
         }
-        
+    
         
         {/* <OrderHistoryCardCopy />
         <OrderHistoryCard />
@@ -111,6 +116,8 @@ const Order = () => {
       </div>
     </div>
   )
+      }
+  </>
   );
 };
 

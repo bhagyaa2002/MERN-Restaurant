@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../assest/foodizo7.png";
+import logo from "../assest/foodizo8.png";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
@@ -107,7 +107,7 @@ const Header = ({ productData }) => {
   return (
     <div>
       <div className="flex">
-        <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
+        <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-gradient-to-r from-gray-700 to-yellow-300">
           <div className="flex items-center h-full justify-between">
             <Link to={""}>
               <div className=" ml-6 h-10">
@@ -190,7 +190,7 @@ const Header = ({ productData }) => {
                       : "text-black"
                   }
                 >
-                  Contact
+                  About
                 </Link>
                 <Link
                   to={"order"}
@@ -222,11 +222,11 @@ const Header = ({ productData }) => {
                   )}
                 </div>
                 {showMenu && (
-                  <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md text-base flex flex-col min-w-[120px] text-center">
+                  <div className="absolute right-1 mt-4  bg-white px-2 py-2 shadow drop-shadow-md text-base flex flex-col min-w-[120px] text-center">
                     {userData.email === process.env.REACT_APP_ADMIN_EMAIL && (
                       <Link
                         to={"NewProduct"}
-                        className="whitespace-nowrap cursor-pointer"
+                        className="whitespace-nowrap cursor-pointer hover:bg-red-100"
                       >
                         New product
                       </Link>
@@ -234,10 +234,10 @@ const Header = ({ productData }) => {
 
                     {userData.image ? (
                       <p
-                        className="cursor-pointer hover text-white px-2 bg-red-500"
+                        className="cursor-pointer hover:bg-red-100 px-2"
                         onClick={handleLogout}
                       >
-                        Logout ({userData.firstName})
+                        Logout 
                       </p>
                     ) : (
                       <Link

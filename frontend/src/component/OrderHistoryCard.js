@@ -11,15 +11,15 @@ const OrderHistoryCard = () => {
         <img src={logo} className="h-20 w-24 object-fit rounded-xl" />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className=" flex items-center text-xl font-mono ">
+        <div className=" flex items-center text-xl">
           Amaranthus
         </div>
-        <div className=" flex items-center font-mono font-thin text-slate-500">
+        <div className=" flex items-center  font-thin text-slate-500">
           Vegetable
         </div>
       </div>
 
-      <div className="flex flex-col justify-center font-mono ml-20 text-lg">
+      <div className="flex flex-col justify-center  ml-20 text-lg">
         <div className="flex  ">
           <div className="flex pb-3 gap-12 items-center">
             <div className="flex">

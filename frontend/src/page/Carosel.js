@@ -69,7 +69,7 @@ const Carosel = () => {
   return (
     <>
       <div
-        className="min-h-[550px] sm:min-h-[600px] bg-yellow-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
+        className="min-h-[550px] sm:min-h-[600px] bg-gray-950 text-white flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200"
         style={bgImage}
         
       >

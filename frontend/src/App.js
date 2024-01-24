@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./component/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet,useLocation} from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import { setDataProduct } from "./redux/productSlice";
@@ -11,7 +11,7 @@ import Footer from "./component/Footer";
 function App() {
   const dispatch=useDispatch()
   const productData=useSelector((state)=>state.product)
-   
+  const location = useLocation();
   
   useEffect(()=>{
     (async()=>{
@@ -31,10 +31,10 @@ console.log('Condition:', !(window.location.pathname === '/login' || window.loca
       <Toaster />
       <div>
         <Header productData={productData}/>
-        <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]" >
+        <main className="pt-16  min-h-[calc(100vh)]" style={{ backgroundColor: '#fcfce1' }} >
           <Outlet />
         </main>
-        {!(window.location.pathname.toLowerCase() === '/login' || window.location.pathname.toLowerCase() === '/signup') && <Footer />}
+        {!(location.pathname.toLowerCase() === '/login' || location.pathname.toLowerCase() === '/signup') && <Footer />}
 
       </div>
     </>

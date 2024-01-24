@@ -18,7 +18,7 @@ const Footer = () => {
           <img src={address} className="w-6 h-6 mr-3" />
           <p className="text-xl font-semibold mb-4">Address</p>
         </div>
-        <p className="">Natural Fresh PVT LTD</p>
+        <p className="">Foodizo PVT LTD</p>
         <p className="">2-1/24, Hustle Hub</p>
         <p className="">3rd cross,8th main </p>
         <p className="">Basavanagudi</p>
@@ -36,7 +36,7 @@ const Footer = () => {
         <p className="mb-4 text-xl font-semibold">Support</p>
         <div className="flex">
           <img src={mail} className="w-6 h-6 mr-3" />
-          <p className="">support@naturefresh.com</p>
+          <p className="">Foodizo.com</p>
         </div>
         <div className="flex mt-3">
           <img src={call} className="w-6 h-6 mr-3" />

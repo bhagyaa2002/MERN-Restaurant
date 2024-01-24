@@ -125,10 +125,10 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div className="flex w-full justify-center items-center flex-col">
+        <div className="relative flex w-full justify-center items-center flex-col">
           {/* <img src={emptyCartImage} className="w-full max-w-sm" /> */}
           <Lottie options={defaultOptions} height={400} width={400} />
-          <p className=" text-3xl font-bold">Empty Cart</p>
+          <p className="absolute text-xl font-semibold mt-96">Empty Cart</p>
         </div>
       )}
     
