@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col">
       <div
-        className="relative flex h-60 justify-center items-center text-4xl  font-bold  bg-no-repeat opacity-50"
+        className="relative flex h-60 justify-center items-center text-4xl  font-bold  bg-no-repeat opacity-50 "
         style={{
           backgroundImage: `url(${c1})`,
           backgroundSize: "cover"
@@ -58,7 +58,7 @@ const Contact = () => {
           />
           <p className="flex font-normal text-2xl mt-6">Free Shipping</p>
           <p className="flex font-light mb-6 text-center p-1">
-          Seamless Shipping, Boundless Joy: Where Every Delivery Comes with the Gift of Free Shipping.
+          Free shipping with every order for a joyful delivery experience.
           </p>
         </div>
         <div className="flex flex-col bg-slate-200 w-52 rounded-lg justify-center items-center hover:shadow-2xl transition duration-300 hover:scale-105">

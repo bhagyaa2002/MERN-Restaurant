@@ -122,8 +122,8 @@ function SignUp() {
     }
   };
   return (
-    <div className="p-3 md:p-4">
-      <div className="w-full max-w-sm bg-white m-auto  flex-col p-4">
+    <div className="flex pt-12">
+      <div className="w-full max-w-sm bg-white m-auto  flex-col p-4 rounded-lg">
         {/*<h1 className='text-center text-2xl font-bold'>SignUp</h1>*/}
         <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative">
           <img

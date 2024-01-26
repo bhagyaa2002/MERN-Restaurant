@@ -37,7 +37,7 @@ const NewProduct = () => {
     console.log(data)
 
     const {name,image,category,price,description}=data
-    if(name && image && category && price){
+    if(name && image && category && price && description){
       const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/uploadProduct`,{
         method : "POST",
         headers: {

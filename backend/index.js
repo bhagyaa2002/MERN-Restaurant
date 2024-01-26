@@ -113,13 +113,13 @@ app.post("/login", (req, res) => {
         };
         console.log(dataSend);
         res.send({
-          message: "Login is successfully",
+          message: "Login Successful",
           alert: true,
           data: dataSend,
         });
       }
       else{res.send({
-        message: "Password is invalid",
+        message: "Invalid Password",
         alert: false,
         data: {},
       });
@@ -155,7 +155,7 @@ const productModel = mongoose.model("product", schemaProduct);
 app.post("/uploadProduct", async (req, res) => {
   const data = productModel(req.body);
   const datasave = await data.save();
-  res.send({ message: "Upload Successfully" });
+  res.send({ message: "Uploaded Successfully" });
 });
 
 //
